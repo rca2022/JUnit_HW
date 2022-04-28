@@ -5,73 +5,73 @@ import static org.junit.Assert.*;
 public class TestSMSRegister {
     @Test
     public void testCorrectRegister(){
-        String regCheck = "register";
-        boolean result = RegisterChecker.checkRegister(regCheck);
+        String smsMessage = "register";
+        boolean result = RegisterChecker.checkRegister(smsMessage);
 
-        assertNotNull(regCheck);
+        assertNotNull(smsMessage);
         assertTrue(result);
     }
 
     @Test
     public void testFirstLetterCapitalRegister(){
-        String regCheck = "Register";
-        boolean result = RegisterChecker.checkRegister(regCheck);
+        String smsMessage = "Register";
+        boolean result = RegisterChecker.checkRegister(smsMessage);
 
-        assertNotNull(regCheck);
+        assertNotNull(smsMessage);
         assertTrue(result);
     }
 
     @Test
     public void testAllCapitalRegister(){
-        String regCheck = "REGISTER";
-        boolean result = RegisterChecker.checkRegister(regCheck);
+        String smsMessage = "REGISTER";
+        boolean result = RegisterChecker.checkRegister(smsMessage);
 
-        assertNotNull(regCheck);
+        assertNotNull(smsMessage);
         assertTrue(result);
     }
 
     @Test
     public void testDifferentCasesRegister(){
-        String regCheck = "rEgiSteR";
-        boolean result = RegisterChecker.checkRegister(regCheck);
+        String smsMessage = "rEgiSteR";
+        boolean result = RegisterChecker.checkRegister(smsMessage);
 
-        assertNotNull(regCheck);
+        assertNotNull(smsMessage);
         assertTrue(result);
     }
 
     @Test
     public void testIncorrectRegisterSpell(){
-        String regCheck = "regsiter";
-        boolean result = RegisterChecker.checkRegister(regCheck);
+        String smsMessage = "regsiter";
+        boolean result = RegisterChecker.checkRegister(smsMessage);
 
-        assertNotNull(regCheck);
+        assertNotNull(smsMessage);
         assertFalse(result);
     }
 
     @Test
     public void testExtraChars(){
-        String regCheck = "regi ster";
-        boolean result = RegisterChecker.checkRegister(regCheck);
+        String smsMessage = "regi ster";
+        boolean result = RegisterChecker.checkRegister(smsMessage);
 
-        assertNotNull(regCheck);
+        assertNotNull(smsMessage);
         assertFalse(result);
     }
 
     @Test
     public void testCheckWhiteSpaces(){
-        String regCheck = "   register   ";
-        boolean result = RegisterChecker.checkRegister(regCheck);
+        String smsMessage = "   register   ";
+        boolean result = RegisterChecker.checkRegister(smsMessage);
 
-        assertNotNull(regCheck);
+        assertNotNull(smsMessage);
         assertTrue(result);
     }
 
     @Test
     public void testNoRegister(){
-        String regCheck = "";
-        boolean result = RegisterChecker.checkRegister(regCheck);
+        String smsMessage = "";
+        boolean result = RegisterChecker.checkRegister(smsMessage);
 
-        assertNotNull(regCheck);
+        assertNotNull(smsMessage);
         assertFalse(result);
     }
 
