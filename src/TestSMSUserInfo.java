@@ -1,7 +1,7 @@
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class UserInfoCheckerTest {
+public class TestSMSUserInfo {
 
     @Test
     public void testValidInfo(){

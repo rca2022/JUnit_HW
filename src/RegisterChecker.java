@@ -1,15 +1,15 @@
-public class SMSRegCheck {
+public class RegisterChecker {
 
-    public static boolean checkRegister(String regCheck){
+    public static boolean checkRegister(String smsMessage){
         boolean result = false;
 
         //trim() - this function removes white spaces before and after the message
         //example: " Register " -> "Register"
-        regCheck = regCheck.trim();
+        smsMessage = smsMessage.trim();
 
-        if(regCheck.length()==8) {
+        if(smsMessage.length()==8) {
 
-            if (regCheck.equalsIgnoreCase("Register")) {
+            if (smsMessage.equalsIgnoreCase("Register")) {
                 result = true;
             }
         }
