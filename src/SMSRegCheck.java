@@ -1,18 +1,14 @@
-import model.SMS;
+public class SMSRegCheck {
 
-import java.util.HashMap;
-
-public class SMSCheck {
-
-    public static boolean checkRegister(HashMap<String, String> smsMap, SMS sms){
+    public static boolean checkRegister(String regCheck){
         boolean result = false;
-        String regCheck = smsMap.get("Register Check");
+
         if(regCheck.length()==8) {
+
             if (regCheck.equalsIgnoreCase("Register")) {
                 result = true;
             }
         }
-
         return result;
     }
 
