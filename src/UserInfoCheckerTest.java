@@ -11,8 +11,22 @@ public class UserInfoCheckerTest {
         assertNotNull(result);
         assertEquals("You are now registered!", result);
         assertNotEquals(
-                "Your input is invalid. " +
+                "Your SMS message is invalid. " +
                 "Please follow the message format.",
+                result
+        );
+    }
+
+    @Test
+    public void testValidInfoWithSpaces(){
+        String smsMessage = "    Jan Dela Cruz   ,   1997-10-11  ,    San Juan City   ";
+        String result = UserInfoChecker.checkUserInfo(smsMessage);
+
+        assertNotNull(result);
+        assertEquals("You are now registered!", result);
+        assertNotEquals(
+                "Your SMS message is invalid. " +
+                        "Please follow the message format.",
                 result
         );
     }
@@ -24,8 +38,22 @@ public class UserInfoCheckerTest {
 
         assertNotNull(result);
         assertEquals(
-                "Your input is invalid. " +
+                "Your SMS message is invalid. " +
                 "Please follow the message format.",
+                result
+        );
+        assertNotEquals("You are now registered!", result);
+    }
+
+    @Test
+    public void testOneCommaFormat(){
+        String smsMessage = "Juan Dela Cruz, 1997-10-11 San Juan City";
+        String result = UserInfoChecker.checkUserInfo(smsMessage);
+
+        assertNotNull(result);
+        assertEquals(
+                "Your SMS message is invalid. " +
+                        "Please follow the message format.",
                 result
         );
         assertNotEquals("You are now registered!", result);
@@ -38,7 +66,21 @@ public class UserInfoCheckerTest {
 
         assertNotNull(result);
         assertEquals(
-                "Your input is invalid. " +
+                "Your SMS message is invalid. " +
+                        "Please follow the message format.",
+                result
+        );
+        assertNotEquals("You are now registered!", result);
+    }
+
+    @Test
+    public void testSeparatedByDashFormat(){
+        String smsMessage = "Jan Dela Cruz - 1997-10-11 - San Juan City";
+        String result = UserInfoChecker.checkUserInfo(smsMessage);
+
+        assertNotNull(result);
+        assertEquals(
+                "Your SMS message is invalid. " +
                         "Please follow the message format.",
                 result
         );
@@ -53,7 +95,7 @@ public class UserInfoCheckerTest {
         assertNotNull(result);
         assertNotEquals("You are now registered!", result);
         assertEquals(
-                "Your input is invalid. " +
+                "Your SMS message is invalid. " +
                         "Please enter your full name without numbers and special characters.",
                 result
         );
@@ -67,7 +109,7 @@ public class UserInfoCheckerTest {
         assertNotNull(result);
         assertNotEquals("You are now registered!", result);
         assertEquals(
-                "Your input is invalid. " +
+                "Your SMS message is invalid. " +
                         "Please enter your full name without numbers and special characters.",
                 result
         );
@@ -81,7 +123,21 @@ public class UserInfoCheckerTest {
         assertNotNull(result);
         assertNotEquals("You are now registered!", result);
         assertEquals(
-                "Your input is invalid. " +
+                "Your SMS message is invalid. " +
+                        "Please enter your full name without numbers and special characters.",
+                result
+        );
+    }
+
+    @Test
+    public void testNoFullName(){
+        String smsMessage = " , 1997-10-11, San Juan City";
+        String result = UserInfoChecker.checkUserInfo(smsMessage);
+
+        assertNotNull(result);
+        assertNotEquals("You are now registered!", result);
+        assertEquals(
+                "Your SMS message is invalid. " +
                         "Please enter your full name without numbers and special characters.",
                 result
         );
@@ -95,7 +151,7 @@ public class UserInfoCheckerTest {
         assertNotNull(result);
         assertNotEquals("You are now registered!", result);
         assertEquals(
-                "Your input is invalid. " +
+                "Your SMS message is invalid. " +
                         "Please follow the date format (yyyy-MM-dd).",
                 result
         );
@@ -109,7 +165,7 @@ public class UserInfoCheckerTest {
         assertNotNull(result);
         assertNotEquals("You are now registered!", result);
         assertEquals(
-                "Your input is invalid. " +
+                "Your SMS message is invalid. " +
                         "Please follow the date format (yyyy-MM-dd).",
                 result
         );
@@ -123,7 +179,7 @@ public class UserInfoCheckerTest {
         assertNotNull(result);
         assertNotEquals("You are now registered!", result);
         assertEquals(
-                "Your input is invalid. " +
+                "Your SMS message is invalid. " +
                         "Please follow the date format (yyyy-MM-dd).",
                 result
         );
@@ -138,7 +194,7 @@ public class UserInfoCheckerTest {
         assertNotNull(result);
         assertEquals("You are now registered!", result);
         assertNotEquals(
-                "Your input is invalid. " +
+                "Your SMS message is invalid. " +
                         "Please follow the date format (yyyy-MM-dd).",
                 result
         );
@@ -152,7 +208,7 @@ public class UserInfoCheckerTest {
         assertNotNull(result);
         assertNotEquals("You are now registered!", result);
         assertEquals(
-                "Your input is invalid. " +
+                "Your SMS message is invalid. " +
                         "Please follow the date format (yyyy-MM-dd).",
                 result
         );
@@ -166,7 +222,21 @@ public class UserInfoCheckerTest {
         assertNotNull(result);
         assertNotEquals("You are now registered!", result);
         assertEquals(
-                "Your input is invalid. " +
+                "Your SMS message is invalid. " +
+                        "Please follow the date format (yyyy-MM-dd).",
+                result
+        );
+    }
+
+    @Test
+    public void testNoBirthdate(){
+        String smsMessage = "Jan Dela Cruz, , San Juan City";
+        String result = UserInfoChecker.checkUserInfo(smsMessage);
+
+        assertNotNull(result);
+        assertNotEquals("You are now registered!", result);
+        assertEquals(
+                "Your SMS message is invalid. " +
                         "Please follow the date format (yyyy-MM-dd).",
                 result
         );
@@ -180,7 +250,7 @@ public class UserInfoCheckerTest {
         assertNotNull(result);
         assertNotEquals("You are now registered!", result);
         assertEquals(
-                "Your input is invalid. " +
+                "Your SMS message is invalid. " +
                         "Please enter your city address without numbers and special characters.",
                 result
         );
@@ -194,7 +264,21 @@ public class UserInfoCheckerTest {
         assertNotNull(result);
         assertNotEquals("You are now registered!", result);
         assertEquals(
-                "Your input is invalid. " +
+                "Your SMS message is invalid. " +
+                        "Please enter your city address without numbers and special characters.",
+                result
+        );
+    }
+
+    @Test
+    public void testNoAddress(){
+        String smsMessage = "Jan Dela Cruz, 1997-10-11, ";
+        String result = UserInfoChecker.checkUserInfo(smsMessage);
+
+        assertNotNull(result);
+        assertNotEquals("You are now registered!", result);
+        assertEquals(
+                "Your SMS message is invalid. " +
                         "Please enter your city address without numbers and special characters.",
                 result
         );
@@ -208,7 +292,7 @@ public class UserInfoCheckerTest {
         assertNotNull(result);
         assertNotEquals("You are now registered!", result);
         assertEquals(
-                "Your input is invalid. " +
+                "Your SMS message is invalid. " +
                         "Please enter your full name without numbers and special characters. " +
                         "Please follow the date format (yyyy-MM-dd). " +
                         "Please enter your city address without numbers and special characters.",
@@ -224,7 +308,7 @@ public class UserInfoCheckerTest {
         assertNotNull(result);
         assertNotEquals("You are now registered!", result);
         assertEquals(
-                "Your input is invalid. " +
+                "Your SMS message is invalid. " +
                         "Please follow the message format.",
                 result
         );

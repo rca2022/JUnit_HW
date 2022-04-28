@@ -6,7 +6,7 @@ public class UserInfoChecker {
 
     public static String checkUserInfo(String smsMessage){
         String[] fields;
-        String result = "Your input is invalid.";
+        String result = "Your SMS message is invalid.";
 
         try {
             fields = smsMessage.split(",");
@@ -53,18 +53,7 @@ public class UserInfoChecker {
                 && !hasSpecialChars(fullName);
     }
 
-    private static boolean checkAddress(String address) {
-        return !address.matches(".*[0-9].*")
-                && !hasSpecialChars(address);
-    }
-
     private static boolean checkBirthDate(String birthDate) {
-        return isParsable(birthDate)
-                && !birthDate.matches("[a-zA-Z]")
-                && !hasSpecialChars(birthDate);
-    }
-
-    private static boolean isParsable(String birthDate) {
         try {
             LocalDate.parse(
                     birthDate,
@@ -76,6 +65,12 @@ public class UserInfoChecker {
         }
 
         return true;
+    }
+
+    private static boolean checkAddress(String address) {
+        return !address.matches(".*[0-9].*")
+                && !hasSpecialChars(address)
+                && !address.equals("");
     }
 
     private static boolean hasSpecialChars(String stringInput) {
