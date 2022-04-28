@@ -32,6 +32,20 @@ public class UserInfoCheckerTest {
     }
 
     @Test
+    public void testValidInfoAllCaps(){
+        String smsMessage = " JUAN DELA CRUZ, 1997-10-11, SAN JUAN CITY";
+        String result = UserInfoChecker.checkUserInfo(smsMessage);
+
+        assertNotNull(result);
+        assertEquals("You are now registered!", result);
+        assertNotEquals(
+                "Your SMS message is invalid. " +
+                        "Please follow the message format.",
+                result
+        );
+    }
+
+    @Test
     public void testNoCommaFormat(){
         String smsMessage = "Juan Dela Cruz 1997-10-11 San Juan City";
         String result = UserInfoChecker.checkUserInfo(smsMessage);
